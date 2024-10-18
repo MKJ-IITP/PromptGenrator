@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prompt Key and Message Generator</title>
+</head>
+<body>
+    <h1>Prompt Key and Message Generator</h1>
+
+    <form action="/generate_prompt" method="post" enctype="multipart/form-data">
+        <label for="transcript_file">Input File for Call Transcript (CSV, JSON, or Text):</label>
+        <input type="file" id="transcript_file" name="transcript_file" accept=".txt, .csv, .json" required><br><br>
+
+        <label for="context">Input Context:</label>
+        <input type="text" id="context" name="context" placeholder="Enter the context for prompt generation" required><br><br>
+
+        <input type="submit" value="Generate Prompt">
+    </form>
+
+    {% if prompt_key and prompt_message %}
+        <h2>Generated Prompt</h2>
+        <p><strong>{{ prompt_key }}</strong></p>
+        <p>{{ prompt_message }}</p>
+    {% endif %}
+</body>
+</html>
